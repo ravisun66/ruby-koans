@@ -15,6 +15,14 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  begin
+  	raise TriangleError if a <= 0 or b <= 0 or c <= 0
+  	sides = [a,b,c]
+  	max_val = sides.max
+  	sides.slice!(sides.index(max_val))
+  	sum_of_remaining_two = sides.inject(&:+)
+  	raise TriangleError if sum_of_remaining_two <= max_val
+  end
   if a == b and b == c
   	:equilateral
   elsif a == b or b == c or c == a
